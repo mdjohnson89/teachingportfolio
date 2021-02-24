@@ -7,10 +7,11 @@ data = r.json()
 p_history = data['bpi']
 
 prices = []
-date = []
+
 for key in p_history:
-    date.append(key)
+    #date.append(key)
     prices.append(p_history.get(key))
+date = [x for x in range(len(p_history))]
 
 plt.plot(date, prices)
 plt.show()
