@@ -1,7 +1,8 @@
 import requests
 
-r = requests.get('https://api.coindesk.com/v1/bpi/historical/close.json')
+number = input('What number is the pokemon you\'re looking for?')
+r = requests.get(f'https://pokeapi.co/api/v2/pokemon/{number}/')
 
-r.json()
+pokemon_info_all = r.json()
 
 
