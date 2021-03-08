@@ -1,18 +1,36 @@
 
-#averages.py
 
-#create an empty list where user inputted value will be added into 
-tol = []
-while True:
-    num = int(input('Enter an integer: '))
-    if num >= 0:
-        tol.append(num)
-    else: 
-        break
-        
-#calculate the length, sum and average of list         
-val = len(tol)
-sum_val = sum(tol)
-avg = sum_val / val
+# script to SCRAPE the HTML at a URL and
+# search for all hotlinks inside this file
+import urllib.request
+import ssl
+ssl._create_default_https_context = ssl._create_unverified_context
 
-print(f'{val} values entered with a sum of {sum_val} and average of {avg}')
+URL = "https://hartford.craigslist.org/"
+
+# snag the entire HTML markup at this URL
+response = urllib.request.urlopen(URL)
+html = response.read()
+
+# convert to a string
+html = str(html)
+
+# dump some of the .html file (just to check for now)
+print (html)
+
+# find all the URLs
+
+URLstart = html.find("content=")
+while (URLstart != -1):
+    
+    #_____YOUR CODE HERE_______
+    # 1) find the end of the URL
+    URLend = html.find(">\n<link")
+    URL = (html[html.index(str(URLstart))+len(str(URLstart)):html.index(str(URLend))])
+    print(URL)
+    
+    URLstart = html.find("href=")
+    
+# end while loop
+
+print("\nDone.\n")
