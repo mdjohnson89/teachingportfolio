@@ -15,7 +15,6 @@ class Student():
 
     #Instance Methods
 
-    
      def __str__(self):
         '''__str__ method to control how this object gets printed / stored as a string'''
         return(f'First Name: {self.first_name}\nLast Name: {self.last_name}\nID#: {self.id_num}\n')
